@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LuckyGame</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+    <script src="./main.js"></script>
+    <script src="./preset/data.js"></script>
+    <script src="./preset/tools.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class="setting">
+        <ul>
+            <li x-data @click="$store.app.debug()" class="setting-item" style="--bg-color:green;"><button></button></li>
+            <li x-data @click="$store.app.nums()" class="setting-item" style="--bg-color:yellow;"><button></button></li>
+            <li x-data @click="$store.app.clear()" class="setting-item" style="--bg-color:red;"><button></button></li>
+            <li x-data @click="$store.app.toggleFullScreen()" class="setting-item full-screen"
+                style="--bg-color:white;"><button></button></li>
+        </ul>
+    </section>
+
+    <header>
+        <h1 class="title" x-data x-text="$store.app.title"></h1>
+    </header>
+    <main>
+        <div class="exhibition" x-ref="lucky" id="winner" x-transition>???</div>
+        <!-- <button x-data @click="$store.app.startRollMemberList()">Start</button>
+        <button x-data @click="$store.app.stopRollMemberListAndSetRandomOne()">Stop</button> -->
+    </main>
+
+    <section class="footer">
+        <div class="mem-list">
+            <template x-data x-for="mem in $store.app.members">
+                <div class="mem-item">
+                    <span x-text="mem"></span><button x-data class="mem-delete"
+                        @click="$store.app.removeByName($el.previousSibling.innerText);"><img src="./assets/minus.svg"
+                            alt="delete">
+                    </button>
+                </div>
+            </template>
+            <form x-data="{newName:''}"
+                @submit.prevent="$store.app.addNewMember(newName); $el.childNodes[0].value = '';" class="mem-add"><input
+                    type="text" x-model="newName">
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>

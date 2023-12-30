@@ -1,0 +1,116 @@
+@font-face {
+    font-family: "RubikScribble";
+    src: url(./assets/RubikScribble-Regular.ttf);
+}
+@font-face {
+    font-family: "NotoSerif";
+    src: url(./assets/NotoSerifSC-Regular.otf);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --primary-bg-color: red;
+    --primary-fg-color: orange;
+    --secondary-bg-color: blue;
+    --secondary-fg-color: green;
+
+    --list-item-font-size: 2rem;
+}
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-fg-color);
+}
+.title {
+    padding: 20px;
+    line-height: 50px;
+    font-family: NotoSerif cursive;
+}
+
+.exhibition {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15rem;
+    height: 300px;
+    font-weight: bold;
+
+    font-family: "RubikScribble", "Ma Shan Zheng", cursive;
+}
+
+.setting {
+    padding: 5px;
+    position: fixed;
+}
+.setting ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.setting-item button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: solid 1px black;
+    background-color: var(--bg-color);
+}
+.mem-list {
+    height: calc(100vh - 300px - 90px);
+    padding-inline: 20px;
+    padding-block-end: 100px;
+    display: flex;
+    flex-flow: column wrap;
+
+    justify-content: start;
+    align-content: stretch;
+}
+
+.mem-item {
+    font-size: var(--list-item-font-size);
+    position: relative;
+}
+
+.mem-item > span {
+    font-family: "RubikScribble", "Ma Shan Zheng", cursive;
+}
+
+.mem-item > button {
+    visibility: hidden;
+    border: solid 1px black;
+    border-radius: 3px;
+    width: 26px;
+    height: 26px;
+    margin-left: 5px;
+}
+
+.mem-item:hover > button {
+    visibility: visible;
+}
+
+.mem-add {
+    height: 38px;
+}
+
+.mem-add > input {
+    border: none;
+    border-bottom: solid 2px var(--primary-fg-color);
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    color: var(--primary-fg-color);
+    font-size: calc(38px - 2px);
+    width: 100px;
+    text-align: center;
+    font-family: "Ma Shan Zheng", cursive;
+}
+
+.mem-delete {
+    position: absolute;
+    top: 6px;
+    background-color: var(--primary-fg-color);
+}
