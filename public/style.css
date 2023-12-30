@@ -18,6 +18,8 @@
     --secondary-fg-color: green;
 
     --list-item-font-size: 2rem;
+    --title-font-size: 3rem;
+    --exhibition-font-size: 15rem;
 }
 body {
     font-family: Arial, sans-serif;
@@ -27,8 +29,8 @@ body {
 }
 .title {
     padding: 20px;
-    line-height: 50px;
-    font-family: NotoSerif cursive;
+    font-family: "NotoSerif" cursive;
+    font-size: var(--title-font-size);
 }
 
 .exhibition {
@@ -36,8 +38,8 @@ body {
     align-items: center;
     justify-content: center;
 
-    font-size: 15rem;
-    height: 300px;
+    font-size: var(--exhibition-font-size);
+    /* height: 300px; */
     font-weight: bold;
 
     font-family: "RubikScribble", "Ma Shan Zheng", cursive;

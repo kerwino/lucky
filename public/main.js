@@ -1,3 +1,11 @@
+function updateCSSVForFontSize(varName, batch) {
+    const root = document.documentElement;
+    const computedStyles = window.getComputedStyle(root);
+    const preV = computedStyles.getPropertyValue(varName).slice(0, -3);
+    const newV = parseFloat(preV) + batch;
+    if (newV < 0) return;
+    root.style.setProperty(varName, `${newV}rem`);
+}
 document.addEventListener("alpine:init", () => {
     Alpine.store("app", {
         debugMode: false,
@@ -13,11 +21,24 @@ document.addEventListener("alpine:init", () => {
 
             const startRollMemberList = this.startRollMemberList;
             const stopRollMemberListAndSetRandomOne = this.stopRollMemberListAndSetRandomOne;
-            hotkeys("left,right", (event, handler) => {
+
+            hotkeys("left,right,u,i,h,j,k,l", (event, handler) => {
                 if (handler.key === "left") {
                     startRollMemberList.bind(this)();
                 } else if (handler.key === "right") {
                     stopRollMemberListAndSetRandomOne.bind(this)();
+                } else if (handler.key === "u") {
+                    updateCSSVForFontSize("--list-item-font-size", 0.1);
+                } else if (handler.key === "i") {
+                    updateCSSVForFontSize("--list-item-font-size", -0.1);
+                } else if (handler.key === "h") {
+                    updateCSSVForFontSize("--exhibition-font-size", 0.5);
+                } else if (handler.key === "j") {
+                    updateCSSVForFontSize("--exhibition-font-size", -0.5);
+                } else if (handler.key === "k") {
+                    updateCSSVForFontSize("--title-font-size", 0.1);
+                } else if (handler.key === "l") {
+                    updateCSSVForFontSize("--title-font-size", -0.1);
                 }
             });
         },
